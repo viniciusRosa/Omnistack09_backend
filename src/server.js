@@ -1,7 +1,8 @@
 require('dotenv').config()
 const express = require('express');
-const routes = require('./routes');
+const cors = require('cors');
 const mongoose = require('mongoose');
+const routes = require('./routes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ mongoose.connect( process.env.MONGODB, {
 // req.params = Acessar route params(edição, delete)
 // req.body = Acessar corpo da requisição(criação, edição)
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
