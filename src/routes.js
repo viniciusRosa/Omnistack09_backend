@@ -5,6 +5,7 @@ const SessionController = require('./controllers/SessionController');
 const SpotController = require('./controllers/SpotController');
 const DashboardController = require('./controllers/DashboardController');
 const BookingController = require('./controllers/BookingController');
+const path = require('path');
 
 const routes = express.Router();
 const upload = multer(uploadConfig);

@@ -22,14 +22,27 @@ module.exports = {
             return res.status(400).json({ error: 'User does not exists' });
         }
 
-        const spot = await Spot.create({
-            user: user_id,
-            thumbnail: filename,
-            company,
-            techs: techs.split(',').map(tech => tech.trim()),
-            price
-        })
-
-        return res.json(spot);
+        try {
+            const spot = await Spot.create({
+                user: user_id,
+                thumbnail: filename,
+                company,
+                techs: techs.split(',').map(tech => tech.trim()),
+                price
+            })    
+            return res.json(spot);
+        } catch(err) {
+            console.log(err);
+        }
+        // const spot = await Spot.create({
+        //     user: user_id,
+        //     thumbnail: filename,
+        //     company,
+        //     techs: techs.split(',').map(tech => tech.trim()),
+        //     price
+        // })
+        console.log(spot.thumbnail);
+       
+    
     }
 };
